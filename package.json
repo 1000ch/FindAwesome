@@ -1,0 +1,24 @@
+{
+  "name": "FindAwesome",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/1000ch/FindAwesome.git"
+  },
+  "author": "1000ch",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/1000ch/FindAwesome/issues"
+  },
+  "homepage": "https://github.com/1000ch/FindAwesome",
+  "dependencies": {
+    "fastclick": "^1.0.2",
+    "font-awesome": "^4.1.0",
+    "jquery": "^2.1.1"
+  }
+}
