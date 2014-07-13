@@ -6,13 +6,13 @@ module.exports = function (grunt) {
           'node_modules/jquery/dist/jquery.js',
           'node_modules/fastclick/lib/fastclick.js'
         ],
-        dest: 'src/js/lib.js'
+        dest: 'public/js/lib.js'
       }
     },
     uglify: {
       lib: {
         files: {
-          'src/js/lib.min.js': 'src/js/lib.js'
+          'public/js/lib.min.js': 'public/js/lib.js'
         }
       }
     }
