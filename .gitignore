@@ -1,3 +1,10 @@
 .idea
 node_modules
 .DS_Store
+
+public/js/lib.min.js
+public/js/lib.js
+public/js/app.min.js
+public/js/app.js
+public/css/app.min.css
+public/css/app.css
