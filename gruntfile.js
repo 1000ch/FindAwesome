@@ -7,12 +7,19 @@ module.exports = function (grunt) {
           'node_modules/fastclick/lib/fastclick.js'
         ],
         dest: 'public/js/lib.js'
+      },
+      app: {
+        src: [
+          'public/js/index.js'
+        ],
+        dest: 'public/js/app.js'
       }
     },
     uglify: {
       lib: {
         files: {
-          'public/js/lib.min.js': 'public/js/lib.js'
+          'public/js/lib.min.js': 'public/js/lib.js',
+          'public/js/app.min.js': 'public/js/app.js'
         }
       }
     }
