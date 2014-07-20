@@ -10,6 +10,7 @@ module.exports = function (grunt) {
       },
       jsapp: {
         src: [
+          'public/js/modules/canvas.js',
           'public/js/index.js'
         ],
         dest: 'public/js/app.js'
