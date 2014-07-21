@@ -1,6 +1,10 @@
 extends layout
 
+block header
+  .l-header
+    h1.appname <b class="appname__firstCap">F</b>ind <b class="appname__secondCap">A</b>wesome
+    p.applead Fuzzy search for Font Awesome.
 block content
-  .l-container
+  .l-content
     canvas#js-canvas(width='320', height='320')
     canvas#js-thumbnail(width='32', height='32')

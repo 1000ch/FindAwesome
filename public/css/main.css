@@ -1,0 +1,57 @@
+/*
+# Foundation
+*/
+
+@import url(http://fonts.googleapis.com/css?family=Oleo+Script+Swash+Caps:400,700);
+
+html {
+  background: #1fa67a;
+}
+
+/* 
+# Layout
+*/
+.l-container {
+  height: 100vh;
+  background: #1fa67a;
+  background: linear-gradient(135deg, #c4bf66 0%,#8ab66b 54%,#1fa67a 100%);
+}
+
+.l-header {
+  position: relative;
+  margin: 0 2em;
+  padding: 1em 0;
+  height: 125px;
+}
+
+.l-content {
+  margin: 0 2em;
+  padding: 1em 0;
+}
+
+/* Components */
+.appname {
+  position: absolute;
+  top: 16px;
+  left: 0;
+  margin: 0;
+  font-size: 64px;
+  font-family: 'Oleo Script Swash Caps', cursive;
+  font-weight: bold;
+  color: #FFF;
+}
+.appname__firstCap{
+  font-size: 86px;
+  vertical-align: -24px;
+  letter-spacing: 2px;
+}
+.appname__secondCap{
+  font-size: 78px;
+}
+
+.applead {
+  top: 84px;
+  left: 46px;
+  position: absolute;
+  color: #FFF;
+}

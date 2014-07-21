@@ -17,7 +17,8 @@ module.exports = function (grunt) {
       },
       cssapp: {
         src: [
-          'node_modules/normalize.css/normalize.css'
+          'node_modules/normalize.css/normalize.css',
+          'public/css/main.css'
         ],
         dest: 'public/css/app.css'
       }
@@ -30,6 +31,13 @@ module.exports = function (grunt) {
         }
       }
     },
+    autoprefixer: {
+        options: {
+          browsers: ['last 2 version']
+        },
+        src: 'public/css/app.css',
+        dest: 'public/css/app.css'
+      },
     csscomb: {
       cssapp: {
         files: {
@@ -48,8 +56,9 @@ module.exports = function (grunt) {
   
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-autoprefixer');
   grunt.loadNpmTasks('grunt-csscomb');
   grunt.loadNpmTasks('grunt-csso');
 
-  grunt.registerTask('build', ['concat', 'uglify', 'csscomb', 'csso']);
+  grunt.registerTask('build', ['concat', 'uglify', 'autoprefixer', 'csscomb', 'csso']);
 };
