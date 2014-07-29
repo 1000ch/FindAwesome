@@ -5,4 +5,8 @@ $(function () {
     console.log(imageData);
   });
 
+  $.get('/fonts/FontAwesome.otf').done(function (data) {
+    var jdataview = new jDataView(data);
+    console.log(jdataview); 
+  });
 });
