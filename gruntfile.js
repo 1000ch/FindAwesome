@@ -32,9 +32,13 @@ module.exports = function (grunt) {
       }
     },
     uglify: {
-      lib: {
+      jslib: {
         files: {
-          'public/js/lib.min.js': 'public/js/lib.js',
+          'public/js/lib.min.js': 'public/js/lib.js'
+        }
+      },
+      jsapp: {
+        files: {
           'public/js/app.min.js': 'public/js/app.js'
         }
       }
@@ -79,9 +83,28 @@ module.exports = function (grunt) {
           filter: 'isFile'
         }]
       }
+    },
+    watch: {
+      jslib: {
+        files: ['<%=concat.jslib.src%>'],
+        tasks: ['concat:jslib', 'uglify:jslib']
+      },
+      jsapp: {
+        files: ['<%=concat.jsapp.src%>'],
+        tasks: ['concat:jsapp', 'uglify:jsapp']
+      },
+      csslib: {
+        files: ['<%=concat.csslib.src%>'],
+        tasks: ['concat:csslib', 'csscomb:csslib', 'csso:csslib']
+      },
+      cssapp: {
+        files: ['<%=concat.cssapp.src%>'],
+        tasks: ['concat:cssapp', 'autoprefixer', 'csscomb:cssapp', 'csso:cssapp']
+      }
     }
   });
-  
+
+  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-copy');
@@ -89,7 +112,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-csscomb');
   grunt.loadNpmTasks('grunt-csso');
 
-  grunt.registerTask('build:js',    ['concat:jslib', 'concat:jsapp']);
+  grunt.registerTask('build:js',    ['concat:jslib', 'concat:jsapp', 'uglify']);
   grunt.registerTask('build:css',   ['concat:csslib', 'concat:cssapp', 'autoprefixer', 'csscomb', 'csso']);
   grunt.registerTask('build:font',  ['copy']);
   grunt.registerTask('build',       ['build:js', 'build:css', 'build:font']);
