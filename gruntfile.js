@@ -4,9 +4,7 @@ module.exports = function (grunt) {
       jslib: {
         src: [
           'bower_components/jquery/dist/jquery.js',
-          'bower_components/fastclick/lib/fastclick.js',
-          'bower_components/jdataview/dist/browser/jdataview.js',
-          'bower_components/ttf.js/src/ttf.js'
+          'bower_components/fastclick/lib/fastclick.js'
         ],
         dest: 'public/js/lib.js'
       },

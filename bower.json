@@ -16,8 +16,6 @@
     "tests"
   ],
   "dependencies": {
-    "jdataview": "jDataView/jDataView#~2.4.6",
-    "ttf.js": "ynakajima/ttf.js#~0.1.2",
     "jquery": "~2.1.1",
     "normalize.css": "~3.0.1",
     "font-awesome": "~4.1.0",
