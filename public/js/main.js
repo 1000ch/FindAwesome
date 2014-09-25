@@ -6,33 +6,29 @@ $(function () {
   });
 
   var $fontawesome = $('#js-fontawesome');
+  $.ajax({
+    url: '/api/fonts',
+    method: 'get'
+  }).done(function (data) {
+    
+    var html = '';
+    data.fonts.forEach(function (font) {
+      html += '<li>';
+      html += '<span class="js-selector">' + font.selector + '</span>';
+      html += '<canvas class="js-canvas" data-content="' + font.content.replace(/\"/g, '') + '" width="50" height="50"></canvas>';
+      html += '</li>';
+    });
+    $fontawesome.html(html);
 
-  var xhr = new XMLHttpRequest();
-  xhr.open('get', '/fonts/fontawesome-webfont.ttf', true);
-  xhr.overrideMimeType('font/opentype');
-  xhr.responseType = 'arraybuffer';
-  
-  xhr.onreadystatechange = function (e) {
-    if (this.readyState === 4 && this.status === 200) {
-
-      var fa = new ttfjs.TTF(e.target.response);
-      var scale = 1000 / fa.head.unitsPerEm;
-
-      var html = '';
-      var path = '';
-      var glyf = null;
-
-      for (var i = 0, l = fa.glyf.length;i < l;i++) {
-        glyf = fa.glyf[i];
-        if (glyf.path !== '') {
-          path = '<path d="' + glyf.path + '" transform="scale(' + scale + ', ' + scale + ')">' + '</path>';
-          html += '<li><svg width="100" height="100" viewBox="-500 -500 2000 2000"><g>' + path + '</g></svg></li>'; 
-        }
-      }
-
-      $fontawesome.append(html);
-    }
-  };
-  
-  xhr.send();
+    $fontawesome.find('li').each(function () {
+      var $this = $(this);
+      var canvas = $this.find('.js-canvas').get(0);
+      var content = canvas.getAttribute('data-content'); 
+      var ctx = canvas.getContext('2d');
+      ctx.font = '24px FontAwesome';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(String.fromCharCode(content.replace(/\\/, '0x')), 0, 0);
+    });
+  });
 });
