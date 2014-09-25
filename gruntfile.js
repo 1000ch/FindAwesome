@@ -4,6 +4,7 @@ module.exports = function (grunt) {
       jslib: {
         src: [
           'bower_components/jquery/dist/jquery.js',
+          'bower_components/mustache/mustache.js',
           'bower_components/fastclick/lib/fastclick.js'
         ],
         dest: 'public/js/lib.js'
