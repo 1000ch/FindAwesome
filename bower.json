@@ -1,10 +1,10 @@
 {
   "name": "FindAwesome",
-  "main": "index.js",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "homepage": "https://github.com/1000ch/FindAwesome",
   "authors": [
-    "1000ch <shogo.sensui@gmail.com>"
+    "1000ch <shogo.sensui@gmail.com>",
+    "hiloki <contact@inkdesign.jp>"
   ],
   "license": "MIT",
   "private": true,
@@ -18,8 +18,8 @@
   "dependencies": {
     "jquery": "~2.1.1",
     "normalize.css": "~3.0.1",
-    "font-awesome": "~4.1.0",
-    "fastclick": "~1.0.2",
+    "font-awesome": "~4.2.0",
+    "fastclick": "~1.0.3",
     "mustache": "~0.8.2"
   }
 }
