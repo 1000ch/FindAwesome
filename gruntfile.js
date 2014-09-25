@@ -74,6 +74,15 @@ module.exports = function (grunt) {
       }
     },
     copy: {
+      css: {
+        files: [{
+          expand: true,
+          flatten: true,
+          src: ['bower_components/font-awesome/css/font-awesome.min.css'],
+          dest: 'public/css/',
+          filter: 'isFile'
+        }]
+      },
       font: {
         files: [{
           expand: true,
@@ -113,7 +122,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-csso');
 
   grunt.registerTask('build:js',    ['concat:jslib', 'concat:jsapp', 'uglify']);
-  grunt.registerTask('build:css',   ['concat:csslib', 'concat:cssapp', 'autoprefixer', 'csscomb', 'csso']);
-  grunt.registerTask('build:font',  ['copy']);
+  grunt.registerTask('build:css',   ['concat:csslib', 'concat:cssapp', 'autoprefixer', 'csscomb', 'csso', 'copy:css']);
+  grunt.registerTask('build:font',  ['copy:font']);
   grunt.registerTask('build',       ['build:js', 'build:css', 'build:font']);
 };
