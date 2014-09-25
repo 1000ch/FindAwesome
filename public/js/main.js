@@ -1,11 +1,25 @@
+var fonts = [];
+
 $(function () {
 
   var canvas = new Canvas('#js-canvas');
   canvas.onThumbnail.addListener(function (imageData) {
-    console.log(imageData);
+    var font;
+    var matches;
+    for (var i = 0, l = fonts.length;i < l;i++) {
+      matches = 0;
+      font = fonts[i];
+      for (var j = 0; j < 4096;j++) {
+        if (imageData.data[j] === font.imageData.data[j]) {
+          matches++;
+        }
+      }
+      console.log(matches);
+    }
   });
 
   var $fontawesome = $('#js-fontawesome');
+
   $.ajax({
     url: '/api/fonts',
     method: 'get'
@@ -24,12 +38,19 @@ $(function () {
     $fontawesome.find('li').each(function () {
       var $this = $(this);
       var canvas = $this.find('.js-canvas').get(0);
+
+      var selector = $this.find('.js-selector').text();
       var content = $this.find('.js-content').text().replace(/\\/, '0x');
+
       var ctx = canvas.getContext('2d');
       ctx.font = '24px FontAwesome';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText(String.fromCharCode(content), canvas.width / 2, canvas.height / 2);
+      fonts.push({
+        selector: selector,
+        imageData: ctx.getImageData(0, 0, canvas.width, canvas.height)
+      });
     });
   });
 });
