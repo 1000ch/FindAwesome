@@ -59,6 +59,9 @@ $(function () {
 
           // render font in canvas
           var ctx = canvas.getContext('2d');
+          ctx.fillStyle = '#fff';
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          ctx.fillStyle = '#000';
           ctx.font = '24px FontAwesome';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
