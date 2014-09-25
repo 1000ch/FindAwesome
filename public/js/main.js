@@ -15,8 +15,8 @@ $(function () {
     data.fonts.forEach(function (font) {
       html += '<li>';
       html += '<span class="js-selector">' + font.selector + '</span>';
-      html += '<span class="js-content">' + font.content.replace(/\"/g, '') + '</span>';
-      html += '<canvas class="js-canvas" width="50" height="50"></canvas>';
+      html += '<span style="display: none;" class="js-content">' + font.content.replace(/\"/g, '') + '</span>';
+      html += '<canvas class="js-canvas" width="32" height="32"></canvas>';
       html += '</li>';
     });
     $fontawesome.html(html);
@@ -29,7 +29,7 @@ $(function () {
       ctx.font = '24px FontAwesome';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillText(String.fromCharCode(content), 0, 0);
+      ctx.fillText(String.fromCharCode(content), canvas.width / 2, canvas.height / 2);
     });
   });
 });
