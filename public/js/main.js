@@ -45,9 +45,9 @@ $(function () {
 
         // render html
         var html = '';
-        var template = document.querySelector('#js-fontawesome-item-template');
+        var template = document.querySelector('#js-fontawesome-item-template').innerHTML;
         data.fonts.forEach(function (font) {
-          html += Mustache.render(template.innerHTML, {
+          html += Mustache.render(template, {
             selector: font.selector,
             content: font.content.replace(/\"/g, '').replace(/\\/, '0x')
           });
