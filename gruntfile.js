@@ -1,20 +1,18 @@
 module.exports = function (grunt) {
   grunt.initConfig({
+    browserify: {
+      jsapp: {
+        src: 'public/js/main.js',
+        dest: 'public/js/app.js'
+      }
+    },
     concat: {
       jslib: {
         src: [
           'bower_components/jquery/dist/jquery.js',
-          'bower_components/mustache/mustache.js',
-          'bower_components/fastclick/lib/fastclick.js'
+          'bower_components/mustache/mustache.js'
         ],
         dest: 'public/js/lib.js'
-      },
-      jsapp: {
-        src: [
-          'public/js/modules/canvas.js',
-          'public/js/main.js'
-        ],
-        dest: 'public/js/app.js'
       },
       csslib: {
         src: [
@@ -98,8 +96,8 @@ module.exports = function (grunt) {
         tasks: ['concat:jslib', 'uglify:jslib']
       },
       jsapp: {
-        files: ['<%=concat.jsapp.src%>'],
-        tasks: ['concat:jsapp', 'uglify:jsapp']
+        files: ['<%=browserify.jsapp.src%>'],
+        tasks: ['browserify:jsapp', 'uglify:jsapp']
       },
       csslib: {
         files: ['<%=concat.csslib.src%>'],
@@ -112,6 +110,7 @@ module.exports = function (grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -120,7 +119,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-csscomb');
   grunt.loadNpmTasks('grunt-csso');
 
-  grunt.registerTask('build:js',    ['concat:jslib', 'concat:jsapp', 'uglify']);
+  grunt.registerTask('build:js',    ['concat:jslib', 'browserify:jsapp', 'uglify']);
   grunt.registerTask('build:css',   ['concat:csslib', 'concat:cssapp', 'autoprefixer', 'csscomb', 'csso', 'copy:css']);
   grunt.registerTask('build:font',  ['copy:font']);
   grunt.registerTask('build',       ['build:js', 'build:css', 'build:font']);
