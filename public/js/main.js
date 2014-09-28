@@ -4,8 +4,14 @@ var DrawingCanvas = require('./modules/drawing-canvas');
 $(function () {
 
   var fontDataMap = [];
+  var $clear = $('#js-clear');
   var $fontawesome = $('#js-fontawesome');
   var drawingCanvas = new DrawingCanvas(document.querySelector('#js-canvas'));
+
+  $clear.on('click', function () {
+    drawingCanvas.initializeContext();
+    $fontawesome.find('li').show();
+  });
 
   drawingCanvas.onThumbnail.addListener(function (imageData) {
 
