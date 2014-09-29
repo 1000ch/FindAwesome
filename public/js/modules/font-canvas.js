@@ -8,7 +8,7 @@
     this.context.fillStyle = '#fff';
     this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
     this.context.fillStyle = '#000';
-    this.context.font = '24px FontAwesome';
+    this.context.font = '48px FontAwesome';
     this.context.textAlign = 'center';
     this.context.textBaseline = 'middle';
   }

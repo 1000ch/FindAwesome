@@ -5,8 +5,8 @@
     this.isTouchDevice = 'touchstart' in window;
     this.canvas = canvas;
     this.thumbnail = document.createElement('canvas');
-    this.thumbnail.width = 32;
-    this.thumbnail.height = 32;
+    this.thumbnail.width = 64;
+    this.thumbnail.height = 64;
 
     this.context = this.canvas.getContext('2d');
     this.ctx = this.thumbnail.getContext('2d');
