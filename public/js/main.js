@@ -16,17 +16,23 @@ $(function () {
   drawingCanvas.onThumbnail.addListener(function (imageData) {
 
     var matchCount;
-    var maxMatchesCount = 0;
+    var notWhiteCount;
+    var maxMatchesPercent = 0;
     var maxMatchesSelector = '';
     for (var i = 0, l = fontDataMap.length;i < l;i++) {
       matchCount = 0;
+      notWhiteCount = 0;
       for (var j = 0; j < 4096;j++) {
-        if (imageData.data[j] === fontDataMap[i].imageData.data[j]) {
+        if (fontDataMap[i].imageData.data[j]) {
+          notWhiteCount++;
+        }
+        if (imageData.data[j] && fontDataMap[i].imageData.data[j]) {
           matchCount++;
         }
       }
-      if (maxMatchesCount < matchCount) {
-        maxMatchesCount = matchCount;
+      var percent = matchCount / notWhiteCount;
+      if (maxMatchesPercent < percent) {
+        maxMatchesPercent = percent;
         maxMatchesSelector = fontDataMap[i].selector;
       }
     }
