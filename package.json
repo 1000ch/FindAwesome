@@ -4,7 +4,7 @@
   "description": "Fuzzy search for Font Awesome.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "grunt build && node index.js",
     "postinstall": "bower install && grunt build"
   },
   "repository": {
